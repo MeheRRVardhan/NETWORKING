@@ -1,0 +1,7 @@
+1. There are 3 fhrp's (FIRST HOP REDUNDANCY PROTOCOLS)
+--> HSRP (Hot standby router protocol)
+--> VRRP (Virtual Router Redundancy protocol)
+--> GLBP (Gateway loadbalancing protocol)
+
+2. 
+

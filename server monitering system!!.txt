@@ -1,0 +1,46 @@
+server monitering system using the concept of fault tolerance..!
+
+TOOLS USING: 
+APACHE24 -- webservers 
+NMAP -- for cheking the OPEN PORTS and topology of the target systems
+PROMETHUS and GRAPHANA -- server monitering tools
+SNORT -- attack monitering
+HPING -- attacking tool (generating traffic for DOS (mainly))
+WIRESHARK -- Tool for monitering network traffic to understand the protocols
+
+VIRTUAL MACHINE USED -- VMWARE WORKSTATION
+
+
+OPERATING SYSTEMS USING: 
+KALI GNOME 44
+UBUNTU 23.04
+WINDOWS 11
+
+SNORT:
+This is the INTRUSION DETECTION TOOL USING IN THIS PROJECT TO MONITER THE ATTACKS ON THE SERVER.
+Here we are configuring the protocol type depends on the attack (ping - DOS (ICMP) ATTACK)
+
+Working done: 
+We are going to make different servers for one website, and going to moniter them when there is an attack happend on the servers and then, we are going to use fault tolerance application to make the main server as standby and run the website 
+on the main server..!
+ports using are 4444, 8080
+
+A decade ago engineers tackled the C10K scalability problems that prevented servers from handling more than 10,000 concurrent connections. This problem was solved by fixing OS kernels and moving away from threaded servers like Apache to event-driven servers like Nginx and Node.
+
+
+We need to use WINDOWS DEFENDER FIREWALL to add the new inbound rules to make the port 4444 as open port and check the 
+open port facilty using enumeration on self host with NMAP.
+
+DEMO - 1
+ip: 192.168.228.0/24 [subnet concept]
+target machine: WINDOWS
+ATTACKER MACHINE: KALI
+MONITERING MACHINE: UBUNTU
+verifying the ICMP packets flow in UBUNTU snort terminal
+
+DEMO - 2
+we are going to check the "SERVER DOWN" due to syn-flood attack.
+TARGET --> 127.0.0.1:4444 
+
+
+

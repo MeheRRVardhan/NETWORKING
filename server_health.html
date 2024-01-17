@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Health Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .healthy {
+            color: #4CAF50;
+        }
+        .unhealthy {
+            color: #FF5733;
+        }
+    </style>
+</head>
+<body>
+    <h1>Server Health Status</h1>
+    <ul>
+        {% for server_name, server_info in servers.items() %}
+            <li class="{{ 'healthy' if server_info.status == 'healthy' else 'unhealthy' }}">
+                {{ server_name }} - Status: {{ server_info.status }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!-- traffic_metrics.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Metrics</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Traffic Metrics</h1>
+    <div id="trafficHistogram"></div>
+    <div id="cpuPerformance"></div>
+
+    <script>
+        // Variables to hold the data
+        var traffic_history = [];
+        var cpu_history = [];
+
+        // Traffic Histogram
+        function updateTrafficHistogram() {
+            Plotly.newPlot('trafficHistogram', [{
+                x: traffic_history,
+                type: 'histogram',
+                marker: {
+                    color: 'orange',
+                },
+            }], {
+                title: 'Traffic Histogram',
+                xaxis: {
+                    title: 'Packet Count',
+                },
+                yaxis: {
+                    title: 'Frequency',
+                },
+            });
+        }
+
+        // CPU Performance Bar Graph
+        function updateCpuPerformance() {
+            var index = Array.from({ length: cpu_history.length }, (_, i) => i);
+            Plotly.newPlot('cpuPerformance', [{
+                x: index,
+                y: cpu_history,
+                type: 'bar',
+                marker: {
+                    color: 'purple',
+                },
+            }], {
+                title: 'CPU Performance Over Time',
+                xaxis: {
+                    title: 'Time',
+                },
+                yaxis: {
+                    title: 'CPU Performance (%)',
+                },
+            });
+        }
+
+        // Function to fetch data from the server
+        function fetchData() {
+            fetch('/update_graphs')
+                .then(response => response.json())
+                .then(data => {
+                    // Assuming 'data' contains 'traffic_data' and 'cpu_data' arrays
+                    // Replace with your actual data
+                    traffic_history = data.traffic_data;
+                    cpu_history = data.cpu_data;
+
+                    // Update graphs
+                    updateTrafficHistogram();
+                    updateCpuPerformance();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        // Initial update
+        fetchData();
+
+        // Update every 5 seconds (adjust as needed)
+        setInterval(fetchData, 5000);
+    </script>
+</body>
+</html>

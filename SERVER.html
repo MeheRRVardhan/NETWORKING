@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Server Health Monitor</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000; /* Dark black */
+      color: #fff; /* White */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    header, footer {
+      background-color: #000; /* Dark black */
+      color: #fff; /* White */
+      text-align: center;
+      padding: 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    section {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 20px;
+      text-align: left;
+      background: url('https://images8.alphacoders.com/706/706494.jpg') center/cover no-repeat fixed;
+    }
+
+    h1 {
+      color: #fff; /* White */
+      font-weight: bold;
+      font-size: 24px;
+    }
+
+    p.description {
+      color: #fff; /* White */
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 12px 24px; /* Adjusted padding */
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #000; /* Black */
+      color: #fff; /* White */
+      border: none;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      transition: background-color 0.3s, transform 0.3s;
+      box-sizing: border-box;
+    }
+
+    button:hover {
+      background-color: #222; /* Slightly lighter black */
+      transform: scale(1.05);
+    }
+
+    .server-info {
+      background-color: #000; /* Dark black */
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+      max-width: 600px;
+      box-sizing: border-box;
+    }
+
+    .server-info:hover {
+      transform: scale(1.05);
+    }
+
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    p {
+      text-align: left;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>SERVER HEALTH MONITORING AND STATISTICS</h1>
+</header>
+
+<section>
+  <p class="description">Discovering server health information and keeping track of it to gain real-time and historical server health status updates.</p>
+  <button id="startButton">Start Monitoring</button>
+
+  <div class="server-info">
+    <h2>Previous Server health statistics</h2>
+    <p>Server 1: All systems are operational. CPU usage: 20%, Memory: 60%, Disk: 80%</p>
+    <p>Server 2: Disk space is running low. CPU usage: 40%, Memory: 70%, Disk: 95%</p>
+    <p>Server 3: CPU usage is high. CPU usage: 90%, Memory: 50%, Disk: 75%</p>
+  </div>
+
+  <div class="button-container">
+    <button onclick="openInNewTab('http://localhost:5001')">Server 1</button>
+    <button onclick="openInNewTab('http://localhost:5002')">Server 2</button>
+    <button onclick="openInNewTab('http://localhost:5003')">Server 3</button>
+    <button onclick="openInNewTab('http://127.0.0.1:5000/server_health')">Health</button>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2023 Server Health Monitor</p>
+</footer>
+
+<script>
+  document.getElementById('startButton').addEventListener('click', function() {
+    openInNewTab('http://localhost:5000');
+    openInNewTab('http://localhost:5001');
+    openInNewTab('http://localhost:5002');
+    openInNewTab('http://localhost:5003');
+  });
+
+  function openInNewTab(url) {
+    var win = window.open(url, '_blank');
+    win.focus();
+  }
+</script>
+
+</body>
+</html>

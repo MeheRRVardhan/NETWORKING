@@ -1,0 +1,69 @@
+<!-- server1.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server 1 Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        main {
+            margin: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .status {
+            font-size: 24px;
+            color: #4CAF50; /* Green color for healthy status */
+        }
+        .previous-reports {
+            margin-top: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Server 1</h1>
+    </header>
+    <main>
+        <p>This is a big webpage showing the status of Server 1.</p>
+        <p class="status">Status: Healthy</p>
+        <div class="previous-reports">
+            <h2>Previous Health Reports</h2>
+            <ul>
+                {% for report in health_reports %}
+                    <li>Iteration {{ report[0] }} - Health: {{ report[1] }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- Add more content here as needed -->
+    </main>
+    <footer>
+        <p>&copy; 2023 Server 1</p>
+    </footer>
+</body>
+</html>
